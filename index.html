@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Mata Atlântica</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #006400;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #fff;
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            width: 60%;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            color: #006400;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .hero-images {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-images .img-bird {
+            width: 100%;
+            height: 150px;
+            background-color: #ddd;
+        }
+
+        .hero-images .img-frog {
+            width: 100%;
+            height: 100px;
+            background-color: #ddd;
+        }
+
+        /* Campanhas Section */
+        .campanhas {
+            background-color: #006400;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .campanhas h2 {
+            font-size: 28px;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .campanhas-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .campanhas-images img {
+            width: 30%;
+            height: 200px;
+            background-color: #ddd;
+        }
+
+        /* Voluntario Section */
+        .voluntario {
+            background-color: #fff;
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .voluntario h2 {
+            font-size: 28px;
+            color: #ffd700;
+            width: 100%;
+            text-align: left;
+        }
+
+        .voluntario-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .voluntario-images {
+            width: 50%;
+            display: flex;
+            gap: 20px;
+        }
+
+        .voluntario-images .img-people1 {
+            width: 48%;
+            height: 200px;
+            background-color: #ddd;
+        }
+
+        .voluntario-images .img-people2 {
+            width: 48%;
+            height: 200px;
+            background-color: #ddd;
+        }
+
+        .voluntario-text {
+            width: 50%;
+        }
+
+        .voluntario-text p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .voluntario-text .img-small {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+
+        .btn-voluntario, .btn-cadastrar {
+            background-color: #ffd700;
+            color: #006400;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-voluntario:hover, .btn-cadastrar:hover {
+            background-color: #e6c200;
+        }
+
+        /* Receba Noticias Section */
+        .receba {
+            background-color: #fff;
+            padding: 40px 0;
+        }
+
+        .receba h2 {
+            font-size: 24px;
+            color: #006400;
+        }
+
+        .receba p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .receba input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .receba button {
+            padding: 10px 20px;
+            background: #006400;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .receba button:hover {
+            background-color: #004d00;
+        }
+
+        /* Manter Vetos Section */
+        .manter-vetos {
+            background-color: #006400;
+            color: #fff;
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .manter-text {
+            width: 60%;
+        }
+
+        .manter-text h2 {
+            font-size: 24px;
+            color: #ffd700;
+        }
+
+        .manter-text p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .manter-image {
+            width: 20%;
+            height: 150px;
+            background-color: #ddd;
+        }
+
+        /* Colaboradores Section */
+        .colaboradores {
+            background-color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .colaboradores h2 {
+            font-size: 28px;
+            color: #006400;
+            margin-bottom: 20px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logos img {
+            width: 100px;
+            height: 50px;
+            background-color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: 2D4C2E;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #ffd700;
+            clip-path: polygon(0 100%, 100% 100%, 50% 0);
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">SOS Mata Atlântica</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Apresentação</a></li>
+                    <li><a href="#campanhas">Campanhas</a></li>
+                    <li><a href="#voluntarios">Voluntário</a></li>
+                    <li><a href="#colaboradores">Colabore</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>SOS MATA ATLÂNTICA</h1>
+                <p>A Fundação SOS Mata Atlântica é uma organização brasileira fundada em 1986 para conservar a Mata Atlântica.</p>
+                <p>A Fundação trabalha através de políticas públicas, educação ambiental, projetos de restauração florestal, voluntariado e mais.</p>
+            </div>
+            <div class="hero-images">
+                <div class="img-bird"></div>
+                <div class="img-frog"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campanhas Section -->
+    <section class="campanhas">
+        <div class="container">
+            <h2 id="campanhas">CAMPANHAS</h2>
+            <div class="campanhas-images">
+                <div style="background-color: #ddd; width: 30%; height: 200px;"></div>
+                <div style="background-color: #ddd; width: 30%; height: 200px;"></div>
+                <div style="background-color: #ddd; width: 30%; height: 200px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voluntario Section -->
+    <section class="voluntario">
+        <div class="container">
+            <h2 id="voluntarios">SEJA UM VOLUNTÁRIO!</h2>
+            <div class="voluntario-content">
+                <div class="voluntario-images">
+                    <div class="img-people1"></div>
+                    <div class="img-people2"></div>
+                </div>
+                <div class="voluntario-text">
+                    <p>Venha se voluntariar na SOS Mata Atlântica para contribuir para a proteção da Mata Atlântica.</p>
+                    <p>Justiça - a luta pela transformação social, econômica e ambiental.</p>
+                    <div class="img-small"></div>
+                    <button class="btn-voluntario" onclick="alert('Você se voluntariou! Confira mais detalhes em nosso site.')">Seja voluntário</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Receba Noticias Section -->
+    <section class="receba">
+        <div class="container">
+            <h2>RECEBA NOTÍCIAS</h2>
+            <p>Ao clicar no botão, a pessoa será direcionada para se cadastrar com seu e-mail. Esse cadastro permitirá que ela receba notícias e imagens das últimas campanhas realizadas pela ONG. A organização é voltada para a preservação do meio ambiente. Com isso, os inscritos ficarão por dentro das ações e projetos em andamento. É uma forma de fortalecer o engajamento com a causa ambiental.</p>
+            <form onsubmit="alert('Obrigado por se inscrever! Verifique seu e-mail para confirmação.'); return false;">
+                <input type="email" placeholder="Seu e-mail">
+                <button type="submit">Inscreva-se</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Manter Vetos Section -->
+    <section class="manter-vetos">
+        <div class="container">
+            <div class="manter-text">
+                <h2>MANTER OS VETOS NO PL DO LICENCIAMENTO E A SALVAR VIDAS NA MATA ATLÂNTICA</h2>
+                <p>A campanha visa manter os vetos no PL do Licenciamento para proteger a Mata Atlântica.</p>
+                <button class="btn-cadastrar" onclick="alert('Você se cadastrou na campanha! Acompanhe as atualizações.')">Cadastrar-se</button>
+            </div>
+            <div class="manter-image"></div>
+        </div>
+    </section>
+
+    <!-- Colaboradores Section -->
+    <section class="colaboradores">
+        <div class="container">
+            <h2 id="colaboradores">COLABORADORES</h2>
+            <div class="logos">
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>2022 © SOS Bold Dreaming</p>
+            <div class="social-icons">
+                <a href="#">●</a>
+                <a href="#">●</a>
+                <a href="#">●</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Adiciona funcionalidade básica aos botões
+        document.querySelector('.btn-voluntario').addEventListener('click', function() {
+            alert('Você se voluntariou! Confira mais detalhes em nosso site.');
+        });
+
+        document.querySelector('.btn-cadastrar').addEventListener('click', function() {
+            alert('Você se cadastrou na campanha! Acompanhe as atualizações.');
+        });
+
+        document.querySelector('.receba form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Obrigado por se inscrever! Verifique seu e-mail para confirmação.');
+        });
+    </script>
+</body>
+</html>
