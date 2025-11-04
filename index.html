@@ -3,443 +3,691 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOS Mata Atlântica</title>
+    <title>SOS MATA ATLÂNTICA - Estética e Funcionalidade</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-        /* Reset básico */
+        /* Definições de Cores e Variáveis */
+        :root {
+            --color-dark-green: #2D4C2E;
+            --color-medium-green: #4B7F4D;
+            --color-light-green: #4B7F4D;
+            --color-yellow: #f8c830;
+            --color-white: #EABB25; /* Cor solicitada para o texto de notícias */
+            --color-gray-text: #e0e0e0;
+            --color-dark-blue: #231F69;
+            --color-section-bg: #fff;
+            --transition-speed: 0.3s;
+        }
+
+        /* Reset básico e Fontes */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
         body {
-            background-color: #fff;
-            color: #333;
+            font-family: 'Open Sans', sans-serif;
+            color: var(--color-dark-green);
+            line-height: 1.6;
+            background-color: var(--color-white);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
 
-        /* Header */
-        header {
-            background-color: #f0f0f0;
-            padding: 10px 0;
+        /* Estrutura Principal e Background */
+        .background-container {
+            background-color: var(--color-dark-green);
+            background-image: linear-gradient(rgba(26, 77, 51, 0.85), rgba(26, 77, 51, 0.95)), url('data:image/svg+xml;utf8,...');
+            background-size: cover;
+            padding: 0 10px; 
+        }
+
+        /* ------------------ ESTILOS GERAIS DE BOTÃO (Para Estética) ------------------ */
+        .donate-btn, .btn-saiba-mais, .btn-volunteer, .btn-register, .btn-collaborator {
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .donate-btn, .btn-saiba-mais, .btn-collaborator {
+            background-color: var(--color-yellow);
+            color: var(--color-dark-green);
+        }
+        .donate-btn:hover, .btn-saiba-mais:hover, .btn-collaborator:hover {
+            background-color: #fdd25e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-volunteer {
+            background-color: var(--color-light-green);
+            color: var(--color-white);
+        }
+        .btn-volunteer:hover {
+            background-color: #9ac45c;
+            transform: scale(1.02);
+        }
+        
+        .btn-register {
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+        }
+        .btn-register:hover {
+            background-color: #50508c;
+        }
+        
+        .donate-btn:active, .btn-saiba-mais:active, .btn-volunteer:active, .btn-register:active, .btn-collaborator:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ------------------ RESTANTE DO CSS ------------------ */
+
+        /* --- Navbar --- */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 5%;
+            background-color: var(--color-white); 
+            border-bottom: 2px solid var(--color-light-green);
         }
 
-        .logo {
-            font-size: 18px;
-            font-weight: bold;
-            color: #006400;
-        }
-
-        nav ul {
+        .logo-area {
             display: flex;
-            list-style: none;
+            flex-direction: column;
+            font-size: 0.8rem;
+            line-height: 1;
         }
 
-        nav ul li {
-            margin-left: 20px;
+        .logo-text-bold {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
         }
 
-        nav ul li a {
+        .nav-links a {
             text-decoration: none;
-            color: #333;
-            font-size: 14px;
+            color: var(--color-dark-green);
+            margin-left: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color var(--transition-speed);
+        }
+        .nav-links a:hover {
+            color: var(--color-light-green);
         }
 
-        /* Hero Section */
-        .hero {
-            background-color: #fff;
-            padding: 40px 0;
+        .search-donate {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 50px;
+            padding: 5px 15px;
+            margin-right: 10px;
+            transition: box-shadow var(--transition-speed);
+        }
+        .search-box:focus-within {
+             box-shadow: 0 0 0 2px var(--color-yellow);
+        }
+
+        .search-box input {
+            border: none;
+            background: none;
+            outline: none;
+            padding-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
             display: flex;
             justify-content: space-between;
+            padding: 50px 5%;
+            color: var(--color-white);
+            background-color: rgba(0, 0, 0, 0.1); 
         }
 
-        .hero-text {
-            width: 60%;
+        .hero-content {
+            max-width: 50%;
         }
 
-        .hero-text h1 {
-            font-size: 36px;
-            color: #006400;
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--color-yellow);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .hero-text p {
-            font-size: 16px;
-            margin: 20px 0;
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--color-gray-text);
         }
 
         .hero-images {
-            width: 35%;
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            gap: 10px;
+            width: 40%;
         }
 
-        .hero-images .img-bird {
-            width: 100%;
-            height: 150px;
-            background-color: #ddd;
-        }
-
-        .hero-images .img-frog {
-            width: 100%;
-            height: 100px;
-            background-color: #ddd;
-        }
-
-        /* Campanhas Section */
-        .campanhas {
-            background-color: #006400;
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .campanhas h2 {
-            font-size: 28px;
-            color: #ffd700;
-            margin-bottom: 20px;
-        }
-
-        .campanhas-images {
+        .image-placeholder {
+            background-color: var(--color-medium-green);
+            border-radius: 8px;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .campanhas-images img {
-            width: 30%;
-            height: 200px;
-            background-color: #ddd;
-        }
-
-        /* Voluntario Section */
-        .voluntario {
-            background-color: #fff;
-            padding: 40px 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .voluntario h2 {
-            font-size: 28px;
-            color: #ffd700;
-            width: 100%;
-            text-align: left;
-        }
-
-        .voluntario-content {
-            display: flex;
-            gap: 20px;
-        }
-
-        .voluntario-images {
-            width: 50%;
-            display: flex;
-            gap: 20px;
-        }
-
-        .voluntario-images .img-people1 {
-            width: 48%;
-            height: 200px;
-            background-color: #ddd;
-        }
-
-        .voluntario-images .img-people2 {
-            width: 48%;
-            height: 200px;
-            background-color: #ddd;
-        }
-
-        .voluntario-text {
-            width: 50%;
-        }
-
-        .voluntario-text p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .voluntario-text .img-small {
-            width: 100px;
-            height: 100px;
-            background-color: #ddd;
-            margin: 20px 0;
-        }
-
-        .btn-voluntario, .btn-cadastrar {
-            background-color: #ffd700;
-            color: #006400;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-voluntario:hover, .btn-cadastrar:hover {
-            background-color: #e6c200;
-        }
-
-        /* Receba Noticias Section */
-        .receba {
-            background-color: #fff;
-            padding: 40px 0;
-        }
-
-        .receba h2 {
-            font-size: 24px;
-            color: #006400;
-        }
-
-        .receba p {
-            font-size: 16px;
-            margin: 20px 0;
-        }
-
-        .receba input {
-            padding: 10px;
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .receba button {
-            padding: 10px 20px;
-            background: #006400;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .receba button:hover {
-            background-color: #004d00;
-        }
-
-        /* Manter Vetos Section */
-        .manter-vetos {
-            background-color: #006400;
-            color: #fff;
-            padding: 40px 0;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-
-        .manter-text {
-            width: 60%;
-        }
-
-        .manter-text h2 {
-            font-size: 24px;
-            color: #ffd700;
-        }
-
-        .manter-text p {
-            font-size: 16px;
-            margin: 20px 0;
-        }
-
-        .manter-image {
-            width: 20%;
-            height: 150px;
-            background-color: #ddd;
-        }
-
-        /* Colaboradores Section */
-        .colaboradores {
-            background-color: #fff;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .colaboradores h2 {
-            font-size: 28px;
-            color: #006400;
-            margin-bottom: 20px;
-        }
-
-        .logos {
-            display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            color: var(--color-white);
+            font-size: 0.9rem;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
+        
+        .main-image { width: 60%; height: 300px; background-image: linear-gradient(to bottom, #f8c830aa, #376442aa); }
+        .side-images { width: 40%; display: flex; flex-direction: column; gap: 10px; }
+        .side-images .image-placeholder { height: 145px; }
+        .side-images .image-placeholder:nth-child(1) { background-color: #558b2f; }
+        .side-images .image-placeholder:nth-child(2) { background-color: #8d6e63; }
 
-        .logos img {
-            width: 100px;
-            height: 50px;
-            background-color: #ddd;
-        }
 
-        /* Footer */
-        footer {
-            background-color: 2D4C2E;
-            color: #fff;
-            padding: 20px 0;
+        /* --- Campanhas Section --- */
+        .campaigns-section {
+            background-color: var(--color-section-bg);
+            padding: 50px 5%;
             text-align: center;
+        }
+
+        .campaigns-section h2 {
+            color: var(--color-dark-green);
+            font-size: 2rem;
+            margin-bottom: 30px;
             position: relative;
         }
 
-        footer::before {
+        .campaigns-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-yellow);
+            margin: 10px auto 0;
+            border-radius: 50px;
+        }
+
+        .campaign-list {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .campaign-card {
+            flex: 1 1 20%;
+            min-width: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed);
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .campaign-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            background-image: linear-gradient(to bottom, #5d9ee1, #376442);
+        }
+        .campaign-card:nth-child(2) .campaign-image { background-image: linear-gradient(to bottom, #7cb342, #376442); }
+        .campaign-card:nth-child(3) .campaign-image { background-image: linear-gradient(to bottom, #00acc1, #376442); }
+
+        .campaign-title {
+            background-color: var(--color-medium-green);
+            color: var(--color-white);
+            padding: 10px 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .special-card .campaign-title {
+            background-color: var(--color-dark-blue); 
+        }
+
+        /* --- Voluntário Section --- */
+        .volunteer-section {
+            background-color: var(--color-dark-blue);
+            padding: 50px 5%;
+            color: var(--color-white);
+        }
+
+        .volunteer-section h2 {
+            color: var(--color-yellow);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .volunteer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .volunteer-images {
+            display: flex;
+            width: 50%;
+            gap: 20px;
+        }
+
+        .main-volunteer { width: 65%; height: 250px; background-color: #5d9e5b; }
+
+        .volunteer-avatars {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .avatar-placeholder {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 5px auto;
+            border: 3px solid var(--color-yellow);
+            background-color: #f0f4c3;
+        }
+
+        .volunteer-text {
+            width: 50%;
+            font-size: 1.1rem;
+        }
+
+        /* --- NOTÍCIAS SECTION (AJUSTADO) --- */
+        .news-section {
+            background-color: var(--color-section-bg);
+            padding: 50px 5%;
+            color: var(--color-dark-green);
+        }
+
+        .news-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            align-items: center; /* Centraliza verticalmente o texto e o box/botão */
+        }
+
+        .news-text {
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        .news-text p {
+            color: var(--color-white); /* Cor #EABB25 (amarelo) */
+            font-weight: 700; /* Negrito */
+            line-height: 1.6;
+        }
+
+        .news-feature {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            /* Alinha todo o conteúdo à direita */
+            align-items: flex-end; 
+            /* Empurra o container para o lado direito */
+            margin-left: auto;
+        }
+
+        .feature-box {
+            background-color: var(--color-medium-green);
+            color: var(--color-white);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 10px; 
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .btn-register {
+            /* Garante que o botão se alinhe com o feature-box, que está à direita */
+            align-self: flex-end; 
+        }
+        /* --- FIM DOS AJUSTES NA SEÇÃO DE NOTÍCIAS --- */
+
+
+        /* --- Colaboradores Section --- */
+        .collaborators-section {
+            background-color: var(--color-dark-blue);
+            padding: 50px 5% 20px;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .collaborators-list {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .collaborator-logo {
+            min-width: 100px;
+            height: 50px;
+            background-color: var(--color-white);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-dark-blue);
+            padding: 5px;
+            transition: transform var(--transition-speed);
+        }
+        .collaborator-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .bold-dreaming { color: #000000; }
+        .unica { background-color: var(--color-yellow); color: var(--color-dark-blue); }
+        .iape { background-color: var(--color-light-green); color: var(--color-white); }
+        .caixa-laranja { background-color: #22c4ff; width: 50px; }
+
+        .collaborator-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .dot.active {
+            background-color: var(--color-yellow);
+            transform: scale(1.2);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--color-dark-blue);
+            padding: 20px 5%;
+            color: var(--color-gray-text);
+            border-top: 10px solid var(--color-yellow); 
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .social-icons i {
+            margin-left: 15px;
+            font-size: 1.2rem;
+            color: var(--color-white);
+            cursor: pointer;
+            transition: color var(--transition-speed);
+        }
+        .social-icons i:hover {
+            color: var(--color-yellow);
+        }
+        
+        .main-footer::before {
             content: '';
             position: absolute;
-            top: -50px;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background-color: #ffd700;
-            clip-path: polygon(0 100%, 100% 100%, 50% 0);
+            bottom: -100px;
+            left: -150px;
+            width: 300px;
+            height: 300px;
+            background-color: var(--color-yellow);
+            border-radius: 50%;
+            z-index: -1;
         }
 
-        .social-icons {
-            margin-top: 10px;
+        /* --- Media Queries (Responsividade) --- */
+        @media (max-width: 1024px) {
+            .navbar { flex-direction: column; gap: 10px; padding-bottom: 20px; }
+            .nav-links { order: 2; margin-top: 10px; }
+            .search-donate { order: 3; width: 100%; justify-content: center; margin-top: 10px;}
+            .search-box { flex-grow: 1; max-width: 300px; }
         }
 
-        .social-icons a {
-            color: #fff;
-            margin: 0 10px;
-            text-decoration: none;
+        @media (max-width: 768px) {
+            .hero-section { flex-direction: column; align-items: center; }
+            .hero-content { max-width: 100%; text-align: center; margin-bottom: 30px; }
+            .hero-images { width: 100%; justify-content: center; }
+            .volunteer-content, .news-content { flex-direction: column; color: #000000; }
+            
+            /* Ajuste mobile para notícias: */
+            .news-text, .news-feature { 
+                width: 100%; 
+                align-items: center; /* Centraliza o box e o botão no mobile */
+                margin-left: 0;
+            }
+            .news-text p { color: var(--color-dark-green); } /* Melhor legibilidade em fundo branco no mobile */
+
+            .news-text { border-right: none; border-bottom: 1px solid #110c0c; padding-bottom: 20px; margin-bottom: 20px;}
+            .campaign-card { flex: 1 1 45%; }
+            .footer-info { flex-direction: column; gap: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .campaign-card { flex: 1 1 100%; }
+            .hero-images { flex-direction: column; }
+            .main-image { width: 100%; }
+            .side-images { width: 100%; flex-direction: row; height: auto; }
+            .side-images .image-placeholder { height: 100px; flex: 1; }
+            .nav-links a { margin: 0 5px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo">SOS Mata Atlântica</div>
-            <nav>
-                <ul>
-                    <li><a href="#">Apresentação</a></li>
-                    <li><a href="#campanhas">Campanhas</a></li>
-                    <li><a href="#voluntarios">Voluntário</a></li>
-                    <li><a href="#colaboradores">Colabore</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
+    <div class="background-container">
+        <header class="navbar">
+            <div class="logo-area">
+                <span class="logo-text-bold">SOS MATA ATLÂNTICA</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#">APRESENTAÇÃO</a>
+                <a href="#">Sobre</a>
+                <a href="#">Campanhas</a>
+                <a href="#">Voluntariado</a>
+                <a href="#">Colaboradores</a>
             </nav>
-        </div>
-    </header>
+            <div class="search-donate">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="pesquisar por campanhas">
+                </div>
+                <button class="donate-btn" id="btn-cadastre">Cadastre-se</button>
+            </div>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-text">
+        <section class="hero-section">
+            <div class="hero-content">
                 <h1>SOS MATA ATLÂNTICA</h1>
-                <p>A Fundação SOS Mata Atlântica é uma organização brasileira fundada em 1986 para conservar a Mata Atlântica.</p>
-                <p>A Fundação trabalha através de políticas públicas, educação ambiental, projetos de restauração florestal, voluntariado e mais.</p>
+                <p>A SOS Mata Atlântica é uma organização não governamental brasileira, fundada em 1986, para promover a defesa da Mata Atlântica, um dos biomas mais ricos e ameaçados do planeta. Atua na proteção do meio ambiente por meio de educação, mobilização social e aperfeiçoamento de políticas públicas.</p>
+                <button class="btn-saiba-mais" id="btn-saiba">Saiba mais</button>
             </div>
             <div class="hero-images">
-                <div class="img-bird"></div>
-                <div class="img-frog"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Campanhas Section -->
-    <section class="campanhas">
-        <div class="container">
-            <h2 id="campanhas">CAMPANHAS</h2>
-            <div class="campanhas-images">
-                <div style="background-color: #ddd; width: 30%; height: 200px;"></div>
-                <div style="background-color: #ddd; width: 30%; height: 200px;"></div>
-                <div style="background-color: #ddd; width: 30%; height: 200px;"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Voluntario Section -->
-    <section class="voluntario">
-        <div class="container">
-            <h2 id="voluntarios">SEJA UM VOLUNTÁRIO!</h2>
-            <div class="voluntario-content">
-                <div class="voluntario-images">
-                    <div class="img-people1"></div>
-                    <div class="img-people2"></div>
-                </div>
-                <div class="voluntario-text">
-                    <p>Venha se voluntariar na SOS Mata Atlântica para contribuir para a proteção da Mata Atlântica.</p>
-                    <p>Justiça - a luta pela transformação social, econômica e ambiental.</p>
-                    <div class="img-small"></div>
-                    <button class="btn-voluntario" onclick="alert('Você se voluntariou! Confira mais detalhes em nosso site.')">Seja voluntário</button>
+                <div class="image-placeholder main-image">Pássaro</div>
+                <div class="side-images">
+                    <div class="image-placeholder">Sapo 1</div>
+                    <div class="image-placeholder">Sapo 2</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Receba Noticias Section -->
-    <section class="receba">
-        <div class="container">
+        <section class="campaigns-section">
+            <h2>CAMPANHAS</h2>
+            <div class="campaign-list">
+                <div class="campaign-card" onclick="cardClick('Água de boa qualidade')">
+                    <div class="campaign-image"></div>
+                    <p class="campaign-title">Água de boa qualidade</p>
+                </div>
+                <div class="campaign-card" onclick="cardClick('Restauração da Floresta')">
+                    <div class="campaign-image"></div>
+                    <p class="campaign-title">Restauração da Floresta</p>
+                </div>
+                <div class="campaign-card" onclick="cardClick('Proteção')">
+                    <div class="campaign-image"></div>
+                    <p class="campaign-title">Proteção</p>
+                </div>
+                <div class="campaign-card special-card" onclick="cardClick('Água limpa')">
+                    <div class="campaign-image"></div>
+                    <p class="campaign-title">Água limpa</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="volunteer-section">
+            <h2>SEJA UM VOLUNTÁRIO!</h2>
+            <div class="volunteer-content">
+                <div class="volunteer-images">
+                    <div class="image-placeholder main-volunteer">Voluntários</div>
+                    <div class="volunteer-avatars">
+                        <div class="image-placeholder avatar-placeholder"></div>
+                        <div class="image-placeholder avatar-placeholder"></div>
+                        <div class="image-placeholder avatar-placeholder"></div>
+                    </div>
+                </div>
+                <div class="volunteer-text">
+                    <p>Venha ser voluntário na ONG SOS Mata Atlântica e contribuir para um futuro melhor e uma palmeira natural!</p>
+                    <p>Junte-se a nós e transforme a vida de milhares de brasileiros e da floresta!</p>
+                    <button class="btn-volunteer" id="btn-voluntario">Seja um voluntário</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-section">
             <h2>RECEBA NOTÍCIAS</h2>
-            <p>Ao clicar no botão, a pessoa será direcionada para se cadastrar com seu e-mail. Esse cadastro permitirá que ela receba notícias e imagens das últimas campanhas realizadas pela ONG. A organização é voltada para a preservação do meio ambiente. Com isso, os inscritos ficarão por dentro das ações e projetos em andamento. É uma forma de fortalecer o engajamento com a causa ambiental.</p>
-            <form onsubmit="alert('Obrigado por se inscrever! Verifique seu e-mail para confirmação.'); return false;">
-                <input type="email" placeholder="Seu e-mail">
-                <button type="submit">Inscreva-se</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Manter Vetos Section -->
-    <section class="manter-vetos">
-        <div class="container">
-            <div class="manter-text">
-                <h2>MANTER OS VETOS NO PL DO LICENCIAMENTO E A SALVAR VIDAS NA MATA ATLÂNTICA</h2>
-                <p>A campanha visa manter os vetos no PL do Licenciamento para proteger a Mata Atlântica.</p>
-                <button class="btn-cadastrar" onclick="alert('Você se cadastrou na campanha! Acompanhe as atualizações.')">Cadastrar-se</button>
+            <div class="news-content">
+                <div class="news-text">
+                    <p>Fique por dentro das últimas e principais notícias sobre a Mata Atlântica. Basta cadastrar o seu e-mail que nós te enviaremos as novidades sobre o bioma, as campanhas realizadas, além de dicas de sustentabilidade e muito mais! Encontre conteúdos exclusivos e receba informações sobre nossos projetos e ações.</p>
+                </div>
+                <div class="news-feature">
+                    <div class="feature-box">
+                        <p class="feature-text">MANTER OS VETOS AO PL DO LICENCIAMENTO SALVA VIDAS E A MATA ATLÂNTICA.</p>
+                    </div>
+                    <button class="btn-register" id="btn-noticias">Cadastrar-se</button>
+                </div>
             </div>
-            <div class="manter-image"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Colaboradores Section -->
-    <section class="colaboradores">
-        <div class="container">
-            <h2 id="colaboradores">COLABORADORES</h2>
-            <div class="logos">
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
-                <div style="background-color: #ddd; width: 100px; height: 50px;"></div>
+        <section class="collaborators-section">
+            <h2>COLABORADORES</h2>
+            <div class="collaborators-list">
+                <div class="collaborator-logo bold-dreaming">Bold Dreaming</div>
+                <div class="collaborator-logo unica">unica</div>
+                <div class="collaborator-logo iape">IAPE</div>
+                <div class="collaborator-logo caixa-laranja"></div>
             </div>
-        </div>
-    </section>
+            <div class="collaborator-controls">
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="btn-collaborator" id="btn-colaborador">Seja um colaborador</button>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>2022 © SOS Bold Dreaming</p>
-            <div class="social-icons">
-                <a href="#">●</a>
-                <a href="#">●</a>
-                <a href="#">●</a>
+        <footer class="main-footer">
+            <div class="footer-info">
+                <span>© 2025 SOS MATA ATLÂNTICA</span>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
-        // Adiciona funcionalidade básica aos botões
-        document.querySelector('.btn-voluntario').addEventListener('click', function() {
-            alert('Você se voluntariou! Confira mais detalhes em nosso site.');
+        // Função de feedback para cliques nos botões
+        function handleButtonClick(action) {
+            alert(`Ação de clique: ${action} realizada com sucesso (simulação)!`);
+            console.log(`Botão clicado: ${action}`);
+        }
+
+        // Adiciona event listeners (ouvintes de evento) aos botões principais
+        document.getElementById('btn-cadastre').addEventListener('click', () => {
+            handleButtonClick('Cadastre-se');
         });
 
-        document.querySelector('.btn-cadastrar').addEventListener('click', function() {
-            alert('Você se cadastrou na campanha! Acompanhe as atualizações.');
+        document.getElementById('btn-saiba').addEventListener('click', () => {
+            handleButtonClick('Saiba mais sobre a SOS Mata Atlântica');
         });
 
-        document.querySelector('.receba form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Obrigado por se inscrever! Verifique seu e-mail para confirmação.');
+        document.getElementById('btn-voluntario').addEventListener('click', () => {
+            handleButtonClick('Inscrição para Voluntariado');
         });
+
+        document.getElementById('btn-noticias').addEventListener('click', () => {
+            handleButtonClick('Cadastro para Receber Notícias');
+        });
+
+        document.getElementById('btn-colaborador').addEventListener('click', () => {
+            handleButtonClick('Inscrição para Colaborador');
+        });
+
+        // Adiciona funcionalidade de clique aos cards de Campanha
+        function cardClick(campaign) {
+            handleButtonClick(`Visualizar Campanha: ${campaign}`);
+        }
+        
+        // Adiciona funcionalidade de clique aos ícones sociais (simulação)
+        document.querySelectorAll('.social-icons i').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                const network = e.target.className.split(' ').find(c => c.startsWith('fa-')).replace('fa-', '');
+                handleButtonClick(`Redirecionar para ${network}`);
+            });
+        });
+        
     </script>
 </body>
 </html>
